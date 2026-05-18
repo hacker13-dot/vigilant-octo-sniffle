@@ -1,18 +1,18 @@
 // ===================== DATA =====================
 
 const CHEESES = [
-  { id: 1,  name: "Parmigiano-Reggiano", origin: "Emilia-Romagna, Italy", type: "aged", price: 28.99, unit: "lb", emoji: "🧀", rating: 4.9, reviews: 342, badge: null,    desc: "The king of Italian cheeses. Aged 24+ months, with a granular texture and rich, nutty, umami-forward flavour. Perfect for grating or eating in chunks with honey." ,  tags: ["Cow's Milk","Hard","Aged 24mo","Imported"] },
-  { id: 2,  name: "French Brie de Meaux", origin: "Île-de-France, France",  type: "soft", price: 19.99, unit: "lb", emoji: "🍥", rating: 4.8, reviews: 218, badge: "New",  desc: "Protected designation Brie with a bloomy white rind and buttery, mushroomy interior. Best served at room temperature with a crusty baguette.",                           tags: ["Cow's Milk","Soft","Bloomy Rind","Imported"] },
-  { id: 3,  name: "Aged Vermont Cheddar", origin: "Vermont, USA",           type: "aged", price: 16.50, unit: "lb", emoji: "🟡", rating: 4.7, reviews: 501, badge: null,    desc: "Sharp, bold and complex — aged for 2 years on the farm. Crunchy tyrosine crystals throughout. A true American classic that stands up to any imported rival.",          tags: ["Cow's Milk","Hard","Aged 2yr","USA"] },
-  { id: 4,  name: "Roquefort AOP",       origin: "Aveyron, France",         type: "blue", price: 32.00, unit: "lb", emoji: "💙", rating: 4.6, reviews: 187, badge: null,    desc: "Cave-aged sheep's milk blue cheese from the Combalou caves. Intensely pungent, creamy and salty. Exceptional crumbled over salads or with a glass of Sauternes.",     tags: ["Sheep's Milk","Blue","AOP","Cave-Aged"] },
-  { id: 5,  name: "Manchego DOP",        origin: "La Mancha, Spain",        type: "hard", price: 21.00, unit: "lb", emoji: "⬜", rating: 4.8, reviews: 276, badge: null,    desc: "Spain's most iconic cheese — made from La Mancha sheep milk, aged 6 months. Buttery with notes of hay and lanolin. The distinctive herringbone rind is a trademark.",  tags: ["Sheep's Milk","Hard","Aged 6mo","Spain"] },
-  { id: 6,  name: "Burrata Fresca",      origin: "Puglia, Italy",           type: "fresh",price: 12.99, unit: "ea", emoji: "⚪", rating: 4.9, reviews: 412, badge: "New",  desc: "Hand-crafted same-day burrata — a delicate mozzarella shell filled with stracciatella and fresh cream. Eat within 24 hours for the full experience.",                  tags: ["Cow's Milk","Fresh","Same-Day","Imported"] },
-  { id: 7,  name: "Époisses de Bourgogne", origin: "Burgundy, France",      type: "soft", price: 24.99, unit: "ea", emoji: "🟠", rating: 4.5, reviews: 134, badge: null,   desc: "Napoleon's favourite cheese — a washed-rind powerhouse with an orange sticky rind, washed with Marc de Bourgogne. Pungent outside, silky and meaty inside.",          tags: ["Cow's Milk","Soft","Washed Rind","AOP"] },
-  { id: 8,  name: "Stilton PDO",         origin: "Nottinghamshire, UK",     type: "blue", price: 26.00, unit: "lb", emoji: "🔵", rating: 4.6, reviews: 209, badge: null,   desc: "The 'King of English Cheeses' — rich, creamy and crumbly with distinctive blue-green veins. Traditionally served with port wine during the festive season.",           tags: ["Cow's Milk","Blue","PDO","UK"] },
-  { id: 9,  name: "Gouda 5-Year Aged",   origin: "Noord-Holland, NL",       type: "aged", price: 34.00, unit: "lb", emoji: "🧡", rating: 4.9, reviews: 388, badge: null,   desc: "Extra-aged Gouda with deep amber colour and caramel-butterscotch sweetness. Packed with crunchy crystals. A dessert cheese experience in every bite.",                tags: ["Cow's Milk","Hard","Aged 5yr","Netherlands"] },
-  { id: 10, name: "Chèvre Log",          origin: "Loire Valley, France",    type: "fresh",price: 10.99, unit: "ea", emoji: "🐐", rating: 4.7, reviews: 165, badge: "New",  desc: "Fresh Loire Valley goat cheese — bright, tangy and lemon-zesty. Wonderful crumbled on salads, spread on toast, or drizzled with wildflower honey.",                  tags: ["Goat's Milk","Fresh","Loire","France"] },
-  { id: 11, name: "Comté Reserve",       origin: "Franche-Comté, France",   type: "hard", price: 29.50, unit: "lb", emoji: "🟤", rating: 4.8, reviews: 298, badge: null,   desc: "18-month aged Comté from a mountain fromagerie. Complex and fruity with notes of toasted hazelnuts and mountain herbs. One of France's great cheeses.",               tags: ["Cow's Milk","Hard","Mountain","AOP"] },
-  { id: 12, name: "Gorgonzola Piccante", origin: "Lombardy, Italy",         type: "blue", price: 22.00, unit: "lb", emoji: "🫐", rating: 4.5, reviews: 172, badge: null,   desc: "Intensely spicy and crumbly aged Gorgonzola — the more assertive sibling of Gorgonzola Dolce. Great for pasta sauces, risotto or paired with pears and walnuts.",     tags: ["Cow's Milk","Blue","Aged","DOP"] },
+  { id: 1,  name: "Parmigiano-Reggiano",   origin: "Emilia-Romagna, Italy",  type: "aged",  price: 28.99, unit: "lb", emoji: "🧀", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Parmigiano_reggiano.jpg/400px-Parmigiano_reggiano.jpg",                                                               rating: 4.9, reviews: 342, badge: null,  desc: "The king of Italian cheeses. Aged 24+ months, with a granular texture and rich, nutty, umami-forward flavour. Perfect for grating or eating in chunks with honey.",  tags: ["Cow's Milk","Hard","Aged 24mo","Imported"] },
+  { id: 2,  name: "French Brie de Meaux",  origin: "Île-de-France, France",   type: "soft",  price: 19.99, unit: "lb", emoji: "🍥", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Brie_de_Meaux_Rouzaire.jpg/400px-Brie_de_Meaux_Rouzaire.jpg",                                                     rating: 4.8, reviews: 218, badge: "New", desc: "Protected designation Brie with a bloomy white rind and buttery, mushroomy interior. Best served at room temperature with a crusty baguette.",                        tags: ["Cow's Milk","Soft","Bloomy Rind","Imported"] },
+  { id: 3,  name: "Aged Vermont Cheddar",  origin: "Vermont, USA",            type: "aged",  price: 16.50, unit: "lb", emoji: "🟡", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Cheddar_Cheese_%28local%29.jpg/400px-Cheddar_Cheese_%28local%29.jpg",                                            rating: 4.7, reviews: 501, badge: null,  desc: "Sharp, bold and complex — aged for 2 years on the farm. Crunchy tyrosine crystals throughout. A true American classic that stands up to any imported rival.",         tags: ["Cow's Milk","Hard","Aged 2yr","USA"] },
+  { id: 4,  name: "Roquefort AOP",         origin: "Aveyron, France",         type: "blue",  price: 32.00, unit: "lb", emoji: "💙", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/RoquefortFR.jpg/400px-RoquefortFR.jpg",                                                                          rating: 4.6, reviews: 187, badge: null,  desc: "Cave-aged sheep's milk blue cheese from the Combalou caves. Intensely pungent, creamy and salty. Exceptional crumbled over salads or with a glass of Sauternes.",    tags: ["Sheep's Milk","Blue","AOP","Cave-Aged"] },
+  { id: 5,  name: "Manchego DOP",          origin: "La Mancha, Spain",        type: "hard",  price: 21.00, unit: "lb", emoji: "⬜", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Queso_Manchego.jpg/400px-Queso_Manchego.jpg",                                                                     rating: 4.8, reviews: 276, badge: null,  desc: "Spain's most iconic cheese — made from La Mancha sheep milk, aged 6 months. Buttery with notes of hay and lanolin. The distinctive herringbone rind is a trademark.", tags: ["Sheep's Milk","Hard","Aged 6mo","Spain"] },
+  { id: 6,  name: "Burrata Fresca",        origin: "Puglia, Italy",           type: "fresh", price: 12.99, unit: "ea", emoji: "⚪", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Fresh_burrata_cheese.jpg/400px-Fresh_burrata_cheese.jpg",                                                          rating: 4.9, reviews: 412, badge: "New", desc: "Hand-crafted same-day burrata — a delicate mozzarella shell filled with stracciatella and fresh cream. Eat within 24 hours for the full experience.",               tags: ["Cow's Milk","Fresh","Same-Day","Imported"] },
+  { id: 7,  name: "Époisses de Bourgogne", origin: "Burgundy, France",        type: "soft",  price: 24.99, unit: "ea", emoji: "🟠", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Epoisses_2.jpg/400px-Epoisses_2.jpg",                                                                             rating: 4.5, reviews: 134, badge: null,  desc: "Napoleon's favourite cheese — a washed-rind powerhouse with an orange sticky rind, washed with Marc de Bourgogne. Pungent outside, silky and meaty inside.",         tags: ["Cow's Milk","Soft","Washed Rind","AOP"] },
+  { id: 8,  name: "Stilton PDO",           origin: "Nottinghamshire, UK",     type: "blue",  price: 26.00, unit: "lb", emoji: "🔵", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Stilton_2.jpg/400px-Stilton_2.jpg",                                                                               rating: 4.6, reviews: 209, badge: null,  desc: "The 'King of English Cheeses' — rich, creamy and crumbly with distinctive blue-green veins. Traditionally served with port wine during the festive season.",          tags: ["Cow's Milk","Blue","PDO","UK"] },
+  { id: 9,  name: "Gouda 5-Year Aged",     origin: "Noord-Holland, NL",       type: "aged",  price: 34.00, unit: "lb", emoji: "🧡", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Goudacheese.jpg/400px-Goudacheese.jpg",                                                                           rating: 4.9, reviews: 388, badge: null,  desc: "Extra-aged Gouda with deep amber colour and caramel-butterscotch sweetness. Packed with crunchy crystals. A dessert cheese experience in every bite.",               tags: ["Cow's Milk","Hard","Aged 5yr","Netherlands"] },
+  { id: 10, name: "Chèvre Log",            origin: "Loire Valley, France",    type: "fresh", price: 10.99, unit: "ea", emoji: "🐐", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/FrenchGoatCheese.jpg/400px-FrenchGoatCheese.jpg",                                                                  rating: 4.7, reviews: 165, badge: "New", desc: "Fresh Loire Valley goat cheese — bright, tangy and lemon-zesty. Wonderful crumbled on salads, spread on toast, or drizzled with wildflower honey.",               tags: ["Goat's Milk","Fresh","Loire","France"] },
+  { id: 11, name: "Comté Reserve",         origin: "Franche-Comté, France",   type: "hard",  price: 29.50, unit: "lb", emoji: "🟤", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Comte_Cheese.jpg/400px-Comte_Cheese.jpg",                                                                         rating: 4.8, reviews: 298, badge: null,  desc: "18-month aged Comté from a mountain fromagerie. Complex and fruity with notes of toasted hazelnuts and mountain herbs. One of France's great cheeses.",              tags: ["Cow's Milk","Hard","Mountain","AOP"] },
+  { id: 12, name: "Gorgonzola Piccante",   origin: "Lombardy, Italy",         type: "blue",  price: 22.00, unit: "lb", emoji: "🫐", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Gorgonzola_--_Di_Giovanna_--_cut.jpg/400px-Gorgonzola_--_Di_Giovanna_--_cut.jpg",                                rating: 4.5, reviews: 172, badge: null,  desc: "Intensely spicy and crumbly aged Gorgonzola — the more assertive sibling of Gorgonzola Dolce. Great for pasta sauces, risotto or paired with pears and walnuts.",    tags: ["Cow's Milk","Blue","Aged","DOP"] },
 ];
 
 const DEALS = [
@@ -48,6 +48,10 @@ let activeFilter = 'all';
 let searchQuery = '';
 
 // ===================== RENDER PRODUCTS =====================
+function imgTag(c, height = '180px') {
+  return `<img src="${c.img}" alt="${c.name}" style="width:100%;height:${height};object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><span style="display:none;font-size:4rem;width:100%;height:${height};align-items:center;justify-content:center;background:linear-gradient(135deg,var(--gold-light),var(--cream-dark))">${c.emoji}</span>`;
+}
+
 function renderProducts(list) {
   const grid = document.getElementById('product-grid');
   if (!list.length) {
@@ -56,8 +60,8 @@ function renderProducts(list) {
   }
   grid.innerHTML = list.map(c => `
     <div class="product-card" onclick="openProduct(${c.id})">
-      <div class="product-image">
-        <span style="font-size:4rem">${c.emoji}</span>
+      <div class="product-image" style="padding:0;overflow:hidden;">
+        ${imgTag(c)}
         ${c.badge ? `<div class="product-badge badge-new">${c.badge}</div>` : ''}
       </div>
       <div class="product-info">
@@ -108,7 +112,7 @@ function openProduct(id) {
 
   document.getElementById('product-modal-content').innerHTML = `
     <div class="product-modal-inner">
-      <div class="product-modal-img">${c.emoji}</div>
+      <div class="product-modal-img" style="padding:0;overflow:hidden;">${imgTag(c, '200px')}</div>
       <div class="product-modal-details">
         <h2>${c.name}</h2>
         <div class="origin">📍 ${c.origin}</div>
@@ -233,8 +237,8 @@ function renderDeals() {
     const discounted = c.price * (1 - d.discount / 100);
     return `
       <div class="deal-card">
-        <div class="deal-image">
-          <span style="font-size:4rem">${c.emoji}</span>
+        <div class="deal-image" style="padding:0;overflow:hidden;position:relative;">
+          ${imgTag(c, '160px')}
           <div class="deal-discount">-${d.discount}%</div>
         </div>
         <div class="deal-info">
