@@ -389,22 +389,70 @@ function toast(msg) {
 
 // ===================== REVIEWS =====================
 const REVIEWS = {
-  1: [{ name:"Marco T.", stars:5, body:"Absolutely spectacular. The crystals practically crunch!" },
-      { name:"Sara L.", stars:5, body:"Best Parm I've ever had outside of Italy." }],
-  2: [{ name:"Julie M.", stars:4, body:"Incredibly creamy. Perfect with a glass of Champagne." }],
-  3: [{ name:"Bob K.", stars:5, body:"Sharp, complex, and deeply satisfying. My go-to cheddar." },
-      { name:"Tina R.", stars:4, body:"Great for grilled cheese too — melts beautifully." }],
-  4: [{ name:"Henri D.", stars:5, body:"The real deal. Cave-aged and absolutely pungent in the best way." }],
-  5: [{ name:"Carmen S.", stars:5, body:"Authentic DOP. Pairs perfectly with quince jelly." }],
-  6: [{ name:"Lucia B.", stars:5, body:"Creamy, fresh, heavenly. We finished it in one sitting." },
-      { name:"James W.", stars:5, body:"Same-day fresh — you can taste the difference." }],
-  7: [{ name:"Pierre G.", stars:4, body:"Not for the faint-hearted, but absolutely magnificent." }],
-  8: [{ name:"Oliver P.", stars:5, body:"Classic Stilton, perfect with a vintage port." }],
-  9: [{ name:"Anke V.", stars:5, body:"The caramel sweetness is unreal. Worth every penny." },
-      { name:"Dave S.", stars:5, body:"Those crunchy crystals are addictive." }],
-  10:[{ name:"Sophie R.", stars:4, body:"Light, tangy and perfect on a salad." }],
-  11:[{ name:"Alain B.", stars:5, body:"Complex and nutty — a cheese lover's cheese." }],
-  12:[{ name:"Gina M.", stars:4, body:"Bold and crumbly. Incredible in pasta sauces." }],
+  1: [
+    { name:"Marco T.",       stars:5, body:"Absolutely spectacular. The crystals practically crunch!" },
+    { name:"Sara L.",        stars:5, body:"Best Parm I've ever had outside of Italy." },
+    { name:"GaryFromOhio",   stars:1, body:"Tasted like someone left a sock in a cave for 2 years. Will not be purchasing again. My dog also refused it." },
+    { name:"Disappointed_Dave", stars:1, body:"I asked for cheese. This looks like a rock someone found on a hiking trail. One star." },
+  ],
+  2: [
+    { name:"Julie M.",       stars:4, body:"Incredibly creamy. Perfect with a glass of Champagne." },
+    { name:"BrieBadReview",  stars:1, body:"Smells like feet. Expensive feet. I paid $20 for something that made my entire fridge smell like a gym locker. NEVER AGAIN." },
+    { name:"Todd B.",        stars:1, body:"My wife left me after I brought this home. Coincidence? I think not. One star." },
+  ],
+  3: [
+    { name:"Bob K.",         stars:5, body:"Sharp, complex, and deeply satisfying. My go-to cheddar." },
+    { name:"Tina R.",        stars:4, body:"Great for grilled cheese too — melts beautifully." },
+    { name:"CheddarHater99", stars:1, body:"Just orange. Everything about it is just orange. I wanted CHEESE not a construction cone. Returned immediately." },
+    { name:"Vermont Refugee",stars:1, body:"I drove to Vermont specifically to tell them their cheese is bad. Worth the trip. One star." },
+  ],
+  4: [
+    { name:"Henri D.",       stars:5, body:"The real deal. Cave-aged and absolutely pungent in the best way." },
+    { name:"KarenW",         stars:1, body:"I opened the package and my smoke alarm went off. This is not a cheese. This is a biological hazard. I am calling my congressman." },
+    { name:"Mike S.",        stars:1, body:"Ordered this for a dinner party. Lost three friends. The fourth is still not speaking to me. This cheese ended my social life." },
+  ],
+  5: [
+    { name:"Carmen S.",      stars:5, body:"Authentic DOP. Pairs perfectly with quince jelly." },
+    { name:"AmericaFirst",   stars:1, body:"Spanish cheese?? In MY pantry?? One star. Also too expensive for what is essentially a fancy rubber eraser." },
+    { name:"PamelaBB",       stars:1, body:"The texture reminded me of a pencil eraser and the taste reminded me of a sad afternoon. Would not recommend." },
+  ],
+  6: [
+    { name:"Lucia B.",       stars:5, body:"Creamy, fresh, heavenly. We finished it in one sitting." },
+    { name:"James W.",       stars:5, body:"Same-day fresh — you can taste the difference." },
+    { name:"BurrataBob",     stars:1, body:"Looked like a ghost. Tasted like air. I paid $13 for what is essentially a bag of warm milk. My toddler cried when she tasted it and honestly same." },
+    { name:"Phil T.",        stars:1, body:"Opened the package and it just… collapsed. Like my hopes and dreams. One star." },
+  ],
+  7: [
+    { name:"Pierre G.",      stars:4, body:"Not for the faint-hearted, but absolutely magnificent." },
+    { name:"NasalRegrets",   stars:1, body:"I thought a small animal had died in my mailbox. Nope. Just this cheese. My neighbours have filed a noise complaint about the smell. Is that possible? One star." },
+    { name:"SherylFromTucson",stars:1, body:"My husband thought I hadn't showered for a week. I had. It was this cheese. Divorce proceedings are ongoing." },
+  ],
+  8: [
+    { name:"Oliver P.",      stars:5, body:"Classic Stilton, perfect with a vintage port." },
+    { name:"BlueIsBad",      stars:1, body:"There is MOLD on this cheese. I did not pay for mold. I can grow mold at home for free. One star and I am reporting this to the FDA." },
+    { name:"GrumpyGrandpa",  stars:1, body:"Looks like someone dropped cheese in a swimming pool and fished it out. My false teeth got stuck. Unacceptable." },
+  ],
+  9: [
+    { name:"Anke V.",        stars:5, body:"The caramel sweetness is unreal. Worth every penny." },
+    { name:"Dave S.",        stars:5, body:"Those crunchy crystals are addictive." },
+    { name:"WalterB",        stars:1, body:"$34 a pound!! For CHEESE?? I could buy a steak. I could buy TWO steaks. Instead I bought this overpriced orange rock. One star and I'm telling my church group." },
+    { name:"CrystalHater",   stars:1, body:"There are hard crunchy bits in this cheese. I assumed it was broken glass and called poison control. They were not amused. One star." },
+  ],
+  10:[
+    { name:"Sophie R.",      stars:4, body:"Light, tangy and perfect on a salad." },
+    { name:"GoatSkeptic",    stars:1, body:"Tastes like it was made by a goat. Oh. I see. Still one star. Why does it smell like a petting zoo? I did not sign up for a petting zoo." },
+    { name:"DairyDenise",    stars:1, body:"I put this on toast and my toast immediately became worse. That's impressive. Negatively impressive." },
+  ],
+  11:[
+    { name:"Alain B.",       stars:5, body:"Complex and nutty — a cheese lover's cheese." },
+    { name:"BasicBarry",     stars:1, body:"Too fancy. Too French. Too much. I just wanted something for my crackers and instead I got a whole personality. One star." },
+    { name:"SimonP",         stars:1, body:"My cat walked away from this cheese. My CAT. The animal that eats hair off the shower drain. Think about that." },
+  ],
+  12:[
+    { name:"Gina M.",        stars:4, body:"Bold and crumbly. Incredible in pasta sauces." },
+    { name:"MoldManic",      stars:1, body:"Blue cheese is just cheese that gave up on itself. One star. I didn't finish it and neither should you." },
+    { name:"AnonymousAndy",  stars:1, body:"Ordered this to impress a date. The date left before dessert. I finished the gorgonzola alone. In the dark. One star." },
+  ],
 };
 
 let pendingReviewCheese = null;
