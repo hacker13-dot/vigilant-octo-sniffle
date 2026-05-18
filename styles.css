@@ -835,6 +835,85 @@ img { max-width: 100%; }
   .coupon-value { font-size: 1.4rem; }
 }
 
+/* ===================== RAFFLES ===================== */
+.raffle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.raffle-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.raffle-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.raffle-image {
+  position: relative;
+  height: 160px;
+  background: linear-gradient(135deg, var(--brown-dark), var(--brown));
+  overflow: hidden;
+}
+.raffle-overlay-emoji {
+  position: absolute;
+  bottom: .5rem;
+  right: .75rem;
+  font-size: 3rem;
+  opacity: .22;
+  pointer-events: none;
+}
+.raffle-timer {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  background: var(--brown-dark);
+  color: var(--white);
+  font-size: .75rem;
+  font-weight: 700;
+  padding: .25rem .7rem;
+  border-radius: 99px;
+}
+.raffle-urgent { background: var(--red) !important; animation: blink 1s step-end infinite; }
+.raffle-info { padding: 1.2rem; }
+.raffle-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: .75rem; }
+.raffle-progress-wrap {
+  height: 8px;
+  background: var(--cream-dark);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: .45rem;
+}
+.raffle-progress-bar { height: 100%; background: linear-gradient(90deg, var(--gold), var(--brown)); border-radius: 99px; transition: width .5s; }
+.raffle-meta { font-size: .8rem; color: var(--text-muted); margin-bottom: .9rem; }
+.raffle-footer { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.raffle-price { font-weight: 700; color: var(--brown); font-size: .92rem; flex: 1; min-width: 80px; }
+.raffle-qty-row { display: flex; align-items: center; gap: .35rem; }
+.raffle-entered { margin-top: .6rem; font-size: .82rem; color: var(--green); font-weight: 600; }
+.raffle-winners-section { margin-top: 1rem; }
+.raffle-winners-section h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1.2rem; }
+.winners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.winner-card {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.2rem;
+  display: flex;
+  gap: .85rem;
+  align-items: center;
+  border-left: 4px solid var(--gold);
+}
+.winner-trophy { font-size: 2rem; flex-shrink: 0; }
+.winner-name { font-weight: 700; font-size: .92rem; }
+.winner-loc { font-weight: 400; color: var(--text-muted); }
+.winner-prize { font-size: .85rem; color: var(--brown); font-weight: 500; margin: .2rem 0; }
+.winner-date { font-size: .76rem; color: var(--text-muted); }
+
 /* ===================== CLUB ===================== */
 .club-grid {
   display: grid;
