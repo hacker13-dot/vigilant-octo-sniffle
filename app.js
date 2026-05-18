@@ -129,6 +129,7 @@ function openProduct(id) {
         <button class="btn-primary btn-large" style="width:100%" onclick="addToCartModal(${c.id})">Add to Cart 🛒</button>
       </div>
     </div>
+    ${renderReviews(c.id)}
   `;
   showModal('product-modal');
 }
@@ -386,12 +387,282 @@ function toast(msg) {
   el._t = setTimeout(() => el.classList.remove('show'), 3000);
 }
 
+// ===================== REVIEWS =====================
+const REVIEWS = {
+  1: [{ name:"Marco T.", stars:5, body:"Absolutely spectacular. The crystals practically crunch!" },
+      { name:"Sara L.", stars:5, body:"Best Parm I've ever had outside of Italy." }],
+  2: [{ name:"Julie M.", stars:4, body:"Incredibly creamy. Perfect with a glass of Champagne." }],
+  3: [{ name:"Bob K.", stars:5, body:"Sharp, complex, and deeply satisfying. My go-to cheddar." },
+      { name:"Tina R.", stars:4, body:"Great for grilled cheese too — melts beautifully." }],
+  4: [{ name:"Henri D.", stars:5, body:"The real deal. Cave-aged and absolutely pungent in the best way." }],
+  5: [{ name:"Carmen S.", stars:5, body:"Authentic DOP. Pairs perfectly with quince jelly." }],
+  6: [{ name:"Lucia B.", stars:5, body:"Creamy, fresh, heavenly. We finished it in one sitting." },
+      { name:"James W.", stars:5, body:"Same-day fresh — you can taste the difference." }],
+  7: [{ name:"Pierre G.", stars:4, body:"Not for the faint-hearted, but absolutely magnificent." }],
+  8: [{ name:"Oliver P.", stars:5, body:"Classic Stilton, perfect with a vintage port." }],
+  9: [{ name:"Anke V.", stars:5, body:"The caramel sweetness is unreal. Worth every penny." },
+      { name:"Dave S.", stars:5, body:"Those crunchy crystals are addictive." }],
+  10:[{ name:"Sophie R.", stars:4, body:"Light, tangy and perfect on a salad." }],
+  11:[{ name:"Alain B.", stars:5, body:"Complex and nutty — a cheese lover's cheese." }],
+  12:[{ name:"Gina M.", stars:4, body:"Bold and crumbly. Incredible in pasta sauces." }],
+};
+
+let pendingReviewCheese = null;
+let selectedStars = 0;
+
+function renderReviews(cheeseId) {
+  const list = REVIEWS[cheeseId] || [];
+  return `
+    <div class="reviews-section">
+      <h4>⭐ Customer Reviews (${list.length})</h4>
+      <div class="review-list">
+        ${list.length ? list.map(r => `
+          <div class="review-item">
+            <div class="review-header">
+              <span class="review-author">${r.name}</span>
+              <span class="review-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span>
+            </div>
+            <div class="review-body">${r.body}</div>
+          </div>
+        `).join('') : '<p style="color:var(--text-muted);font-size:.9rem">No reviews yet. Be the first!</p>'}
+      </div>
+      <button class="btn-outline" onclick="openReviewModal(${cheeseId})">Write a Review</button>
+    </div>`;
+}
+
+function openReviewModal(cheeseId) {
+  pendingReviewCheese = cheeseId;
+  selectedStars = 0;
+  document.querySelectorAll('#star-picker span').forEach(s => s.classList.remove('lit'));
+  document.getElementById('review-name').value = '';
+  document.getElementById('review-text').value = '';
+  showModal('review-modal');
+}
+
+function pickStar(n) {
+  selectedStars = n;
+  document.querySelectorAll('#star-picker span').forEach((s, i) => {
+    s.classList.toggle('lit', i < n);
+  });
+}
+
+function submitReview() {
+  const name = document.getElementById('review-name').value.trim();
+  const body = document.getElementById('review-text').value.trim();
+  if (!name || !body || !selectedStars) { toast('Please fill in all fields and select a star rating.'); return; }
+  if (!REVIEWS[pendingReviewCheese]) REVIEWS[pendingReviewCheese] = [];
+  REVIEWS[pendingReviewCheese].unshift({ name, stars: selectedStars, body });
+  closeModal('review-modal');
+  toast('✅ Review submitted — thank you!');
+  openProduct(pendingReviewCheese);
+}
+
+// Patch openProduct to include reviews
+const _openProductOrig = openProduct;
+// Override done inline — we'll inject reviews into the modal content below.
+
+// ===================== BOARD BUILDER =====================
+const EXTRAS = [
+  { id: 'e1', name: 'Prosciutto di Parma', emoji: '🥩', price: 9.99 },
+  { id: 'e2', name: 'Fig Jam',             emoji: '🍯', price: 5.99 },
+  { id: 'e3', name: 'Honey',               emoji: '🍯', price: 4.99 },
+  { id: 'e4', name: 'Walnuts',             emoji: '🌰', price: 3.99 },
+  { id: 'e5', name: 'Sourdough Crackers',  emoji: '🥨', price: 4.49 },
+  { id: 'e6', name: 'Cornichons',          emoji: '🥒', price: 3.49 },
+  { id: 'e7', name: 'Dried Cranberries',   emoji: '🍒', price: 2.99 },
+  { id: 'e8', name: 'Quince Paste',        emoji: '🍑', price: 5.49 },
+];
+
+let board = []; // { id, name, emoji, price, type }
+
+function renderBoardPalette() {
+  document.getElementById('palette-cheeses').innerHTML = CHEESES.slice(0,8).map(c => `
+    <div class="palette-item" onclick="addToBoard('c${c.id}','${c.name.replace(/'/g,"\\'")}','${c.emoji}',${c.price},'cheese')">
+      <span class="pi-emoji">${c.emoji}</span>
+      <span class="pi-name">${c.name}</span>
+      <span class="pi-price">$${c.price.toFixed(2)}</span>
+    </div>`).join('');
+  document.getElementById('palette-extras').innerHTML = EXTRAS.map(e => `
+    <div class="palette-item" onclick="addToBoard('${e.id}','${e.name}','${e.emoji}',${e.price},'extra')">
+      <span class="pi-emoji">${e.emoji}</span>
+      <span class="pi-name">${e.name}</span>
+      <span class="pi-price">$${e.price.toFixed(2)}</span>
+    </div>`).join('');
+}
+
+function addToBoard(id, name, emoji, price, type) {
+  board.push({ id: id + '_' + Date.now(), srcId: id, name, emoji, price, type });
+  renderBoard();
+  toast(`${emoji} ${name} added to board!`);
+}
+
+function removeFromBoard(uid) {
+  board = board.filter(b => b.id !== uid);
+  renderBoard();
+}
+
+function renderBoard() {
+  const placeholder = document.getElementById('board-placeholder');
+  const items = document.getElementById('board-items');
+  const total = board.reduce((s, b) => s + b.price, 0);
+  document.getElementById('board-total').textContent = '$' + total.toFixed(2);
+  if (!board.length) { placeholder.style.display = 'flex'; items.innerHTML = ''; return; }
+  placeholder.style.display = 'none';
+  items.innerHTML = board.map(b => `
+    <div class="board-chip">
+      <span>${b.emoji}</span>
+      <span>${b.name}</span>
+      <button class="chip-remove" onclick="removeFromBoard('${b.id}')">✕</button>
+    </div>`).join('');
+}
+
+function clearBoard() {
+  board = [];
+  renderBoard();
+  toast('Board cleared.');
+}
+
+function addBoardToCart() {
+  if (!board.length) { toast('Add some items to your board first!'); return; }
+  board.forEach(b => {
+    if (b.type === 'cheese') {
+      const id = parseInt(b.srcId.replace('c',''));
+      addToCart(id, true);
+    } else {
+      const existing = cart.find(i => i.id === b.srcId);
+      if (existing) existing.qty++;
+      else cart.push({ id: b.srcId, name: b.name, emoji: b.emoji, price: b.price, qty: 1 });
+    }
+  });
+  updateCartUI();
+  toast(`🪵 Entire board (${board.length} items) added to cart!`);
+  clearBoard();
+}
+
+// ===================== CHEESE QUIZ =====================
+const QUIZ_STEPS = [
+  {
+    q: "What flavour intensity do you prefer?",
+    opts: [
+      { emoji:'😌', label:'Mild & Gentle',    sub:'Subtle, crowd-pleasing',  val:'mild' },
+      { emoji:'🔥', label:'Bold & Assertive',  sub:'Strong, complex flavours', val:'bold' },
+      { emoji:'🌊', label:'Rich & Creamy',     sub:'Luxurious texture',        val:'creamy' },
+      { emoji:'🧂', label:'Sharp & Tangy',     sub:'Zingy and bright',         val:'sharp' },
+    ]
+  },
+  {
+    q: "What texture do you love?",
+    opts: [
+      { emoji:'🧈', label:'Soft & Spreadable', sub:'Smooth and silky',        val:'soft' },
+      { emoji:'🪨', label:'Firm & Crumbly',    sub:'Dense and satisfying',    val:'hard' },
+      { emoji:'💧', label:'Gooey & Melty',     sub:'Perfect for cooking',     val:'gooey' },
+      { emoji:'💎', label:'Crystalline',        sub:'Aged with crunchy bits',  val:'crystal' },
+    ]
+  },
+  {
+    q: "What's your ideal cheese moment?",
+    opts: [
+      { emoji:'🍷', label:'Wine Night',        sub:'Paired with a good bottle', val:'wine' },
+      { emoji:'🍽️', label:'Cooking & Recipes', sub:'Melted in pasta or pizza',  val:'cook' },
+      { emoji:'🪵', label:'Cheese Board',      sub:'Shared with friends',       val:'board' },
+      { emoji:'🥗', label:'Salads & Snacks',   sub:'Light everyday eating',     val:'snack' },
+    ]
+  },
+];
+
+const QUIZ_RECS = {
+  'mild-soft':    [2, 6],   // Brie, Burrata
+  'mild-hard':    [5, 11],  // Manchego, Comté
+  'mild-gooey':   [6, 10],  // Burrata, Chèvre
+  'mild-crystal': [1, 11],  // Parm, Comté
+  'bold-soft':    [7, 4],   // Époisses, Roquefort
+  'bold-hard':    [3, 9],   // Cheddar, Gouda
+  'bold-gooey':   [7, 12],  // Époisses, Gorgonzola
+  'bold-crystal': [1, 9],   // Parm, Gouda
+  'creamy-soft':  [2, 6],   // Brie, Burrata
+  'creamy-hard':  [11, 5],  // Comté, Manchego
+  'creamy-gooey': [6, 2],   // Burrata, Brie
+  'creamy-crystal':[9, 1],  // Gouda, Parm
+  'sharp-soft':   [7, 10],  // Époisses, Chèvre
+  'sharp-hard':   [3, 5],   // Cheddar, Manchego
+  'sharp-gooey':  [12, 4],  // Gorgonzola, Roquefort
+  'sharp-crystal':[4, 8],   // Roquefort, Stilton
+};
+
+let quizAnswers = [];
+
+function startQuiz() {
+  quizAnswers = [];
+  renderQuizStep(0);
+  showModal('quiz-modal');
+}
+
+function renderQuizStep(stepIdx) {
+  if (stepIdx >= QUIZ_STEPS.length) { showQuizResult(); return; }
+  const step = QUIZ_STEPS[stepIdx];
+  const progress = QUIZ_STEPS.map((_, i) => `<div class="quiz-dot ${i < stepIdx ? 'done' : ''}"></div>`).join('');
+  document.getElementById('quiz-content').innerHTML = `
+    <div class="quiz-step">
+      <div class="quiz-progress">${progress}</div>
+      <h2>${step.q}</h2>
+      <p>Step ${stepIdx + 1} of ${QUIZ_STEPS.length}</p>
+      <div class="quiz-options">
+        ${step.opts.map(o => `
+          <button class="quiz-option" onclick="quizAnswer('${o.val}', ${stepIdx + 1})">
+            <span class="qo-emoji">${o.emoji}</span>
+            <span class="qo-label">${o.label}</span>
+            <span class="qo-sub">${o.sub}</span>
+          </button>`).join('')}
+      </div>
+    </div>`;
+}
+
+function quizAnswer(val, nextStep) {
+  quizAnswers.push(val);
+  renderQuizStep(nextStep);
+}
+
+function showQuizResult() {
+  const key = quizAnswers[0] + '-' + quizAnswers[1];
+  const ids = QUIZ_RECS[key] || [1, 2];
+  const picks = ids.map(id => CHEESES.find(c => c.id === id)).filter(Boolean);
+  const main = picks[0];
+  const alt = picks[1];
+  document.getElementById('quiz-content').innerHTML = `
+    <div class="quiz-result">
+      <div class="quiz-progress">${QUIZ_STEPS.map(() => '<div class="quiz-dot done"></div>').join('')}</div>
+      <div style="font-size:.85rem;color:var(--text-muted);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.05em">Your Perfect Cheese</div>
+      <img class="quiz-result-img" src="${main.img}" alt="${main.name}" onerror="this.src='';this.style.display='none'" />
+      <h3>${main.name}</h3>
+      <div class="result-origin">📍 ${main.origin}</div>
+      <div class="result-desc">${main.desc}</div>
+      <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem">
+        <button class="btn-primary btn-large" onclick="addToCart(${main.id});closeModal('quiz-modal')">Add to Cart $${main.price.toFixed(2)}</button>
+        <button class="btn-outline" onclick="closeModal('quiz-modal');openProduct(${main.id})">View Details</button>
+      </div>
+      ${alt ? `<p style="color:var(--text-muted);font-size:.88rem">You might also love: <strong style="cursor:pointer;color:var(--brown)" onclick="closeModal('quiz-modal');openProduct(${alt.id})">${alt.name}</strong></p>` : ''}
+      <button class="btn-outline" style="margin-top:1rem" onclick="startQuiz()">Retake Quiz</button>
+    </div>`;
+}
+
+// ===================== CLUB =====================
+function joinClub(planName) {
+  document.getElementById('club-plan-label').textContent = planName;
+  showModal('club-modal');
+}
+
+function confirmClub() {
+  closeModal('club-modal');
+  toast('🎉 Welcome to the club! Your first box ships this Monday.');
+}
+
 // ===================== INIT =====================
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts(CHEESES);
   renderTrades();
   renderDeals();
   renderCoupons();
+  renderBoardPalette();
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });

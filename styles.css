@@ -834,3 +834,220 @@ img { max-width: 100%; }
   .coupon-left { width: 85px; min-width: 85px; }
   .coupon-value { font-size: 1.4rem; }
 }
+
+/* ===================== CLUB ===================== */
+.club-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.club-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 1.75rem;
+  text-align: center;
+  transition: transform .2s, box-shadow .2s;
+  position: relative;
+}
+.club-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+.club-featured {
+  border: 3px solid var(--gold);
+  transform: scale(1.03);
+}
+.club-featured:hover { transform: scale(1.03) translateY(-4px); }
+
+.club-badge {
+  display: inline-block;
+  background: var(--brown);
+  color: var(--white);
+  font-size: .75rem;
+  font-weight: 700;
+  padding: .25rem .85rem;
+  border-radius: 99px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.badge-gold { background: var(--gold); color: var(--brown-dark); }
+
+.club-emoji { font-size: 3rem; margin-bottom: .75rem; }
+
+.club-card h3 { font-size: 1.35rem; margin-bottom: .5rem; }
+
+.club-price {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--brown);
+  margin-bottom: 1.25rem;
+  font-family: 'Playfair Display', serif;
+}
+.club-price span { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
+
+.club-features {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 1.75rem;
+}
+.club-features li { padding: .35rem 0; font-size: .92rem; border-bottom: 1px solid var(--cream-dark); }
+.club-features li:last-child { border: none; }
+
+/* ===================== BOARD BUILDER ===================== */
+.builder-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.builder-palette {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+.builder-palette h4 {
+  font-size: .88rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-muted);
+  margin-bottom: .75rem;
+}
+
+.palette-items { display: flex; flex-direction: column; gap: .5rem; }
+
+.palette-item {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .55rem .75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background .15s;
+  font-size: .88rem;
+  font-weight: 500;
+  border: 1.5px solid var(--cream-dark);
+  background: var(--cream);
+  user-select: none;
+}
+.palette-item:hover { background: var(--cream-dark); border-color: var(--gold); }
+.palette-item:active { transform: scale(.97); }
+.palette-item .pi-emoji { font-size: 1.2rem; }
+.palette-item .pi-name { flex: 1; }
+.palette-item .pi-price { font-size: .8rem; color: var(--text-muted); }
+
+.builder-board {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-height: 320px;
+  padding: 1.5rem;
+  border: 2px dashed var(--cream-dark);
+  position: relative;
+}
+
+.board-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.board-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+.board-chip {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--cream-dark);
+  border-radius: 99px;
+  padding: .45rem 1rem .45rem .75rem;
+  font-size: .88rem;
+  font-weight: 500;
+  border: 1.5px solid var(--gold);
+  animation: pop-in .15s ease;
+}
+@keyframes pop-in { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.board-chip .chip-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: .9rem;
+  line-height: 1;
+  padding: 0 0 0 .25rem;
+  font-family: 'Inter', sans-serif;
+}
+.board-chip .chip-remove:hover { color: var(--red); }
+
+.builder-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.builder-total { font-size: 1.15rem; font-weight: 600; flex: 1; }
+
+@media (max-width: 760px) {
+  .builder-layout { grid-template-columns: 1fr; }
+  .club-featured { transform: none; }
+}
+
+/* ===================== REVIEWS ===================== */
+.reviews-section { margin-top: 1.5rem; border-top: 2px solid var(--cream-dark); padding-top: 1.2rem; }
+.reviews-section h4 { font-size: 1.1rem; margin-bottom: 1rem; }
+
+.review-list { display: flex; flex-direction: column; gap: .9rem; max-height: 220px; overflow-y: auto; margin-bottom: 1rem; }
+
+.review-item { background: var(--cream); border-radius: var(--radius-sm); padding: .85rem 1rem; }
+.review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .3rem; }
+.review-author { font-weight: 600; font-size: .9rem; }
+.review-stars { color: var(--gold-dark); font-size: .85rem; }
+.review-body { font-size: .88rem; color: var(--text-muted); }
+
+/* ===================== QUIZ ===================== */
+.quiz-step { animation: slide-up .2s ease; }
+.quiz-step h2 { font-size: 1.6rem; margin-bottom: .5rem; }
+.quiz-step p { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+.quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1.5rem; }
+.quiz-option {
+  padding: 1rem;
+  border: 2px solid var(--cream-dark);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: center;
+  transition: all .15s;
+  background: var(--cream);
+  font-family: 'Inter', sans-serif;
+}
+.quiz-option:hover { border-color: var(--brown); background: var(--white); }
+.quiz-option .qo-emoji { font-size: 2rem; display: block; margin-bottom: .4rem; }
+.quiz-option .qo-label { font-weight: 600; font-size: .92rem; display: block; }
+.quiz-option .qo-sub { font-size: .78rem; color: var(--text-muted); display: block; margin-top: .2rem; }
+
+.quiz-result { text-align: center; }
+.quiz-result-img { width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin: 0 auto 1rem; display: block; box-shadow: var(--shadow); }
+.quiz-result h3 { font-size: 1.8rem; margin-bottom: .3rem; }
+.quiz-result .result-origin { color: var(--text-muted); margin-bottom: .75rem; }
+.quiz-result .result-desc { font-size: .95rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+
+.quiz-progress { display: flex; gap: .35rem; margin-bottom: 1.5rem; }
+.quiz-dot { flex: 1; height: 5px; border-radius: 99px; background: var(--cream-dark); transition: background .3s; }
+.quiz-dot.done { background: var(--brown); }
+
+/* ===================== STAR PICKER ===================== */
+.star-picker { display: flex; gap: .3rem; font-size: 2rem; color: var(--cream-dark); cursor: pointer; margin-bottom: .5rem; }
+.star-picker span { transition: color .15s; }
+.star-picker span.lit { color: var(--gold); }
