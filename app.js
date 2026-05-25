@@ -968,6 +968,45 @@ function confirmClub() {
   toast('🎉 Welcome to the club! Your first box ships this Monday.');
 }
 
+// ===================== SCROLLING REVIEWS TICKER =====================
+const TICKER_REVIEWS = [
+  { stars:5, body:"I genuinely wept. This Comté is the best thing I have ever put in my mouth and I've been to France.",          author:"Rebecca T.", location:"Austin, TX",      cheese:"Comté Reserve" },
+  { stars:5, body:"Ordered the Parmigiano at midnight on a whim. It arrived cold-packed and perfect. My life is changed.",        author:"Jonathan K.", location:"Boston, MA",     cheese:"Parmigiano-Reggiano" },
+  { stars:5, body:"The burrata came the same day. SAME DAY. It tasted like being in Puglia. I haven't left my kitchen since.",   author:"Maria S.",    location:"New York, NY",    cheese:"Burrata Fresca" },
+  { stars:5, body:"Bought the Roquefort as a dare. Now I'm the person who brings fancy blue cheese to every party. Thank you.",  author:"Dave W.",     location:"Chicago, IL",     cheese:"Roquefort AOP" },
+  { stars:5, body:"The cheese quiz recommended Brie de Meaux. I didn't even know I liked soft cheese. Now it's my personality.", author:"Priya M.",    location:"San Francisco, CA",cheese:"French Brie de Meaux" },
+  { stars:5, body:"Five stars isn't enough. The Gouda 5-Year is caramel in cheese form. I proposed to my girlfriend the same night.", author:"Tom B.", location:"Seattle, WA",    cheese:"Gouda 5-Year Aged" },
+  { stars:5, body:"Serra da Estrela arrived perfectly packed. I scooped it straight from the box with bread. Absolutely stunning.",author:"Laura F.",   location:"Denver, CO",      cheese:"Serra da Estrela DOP" },
+  { stars:5, body:"Used CHEESYFREE at checkout by accident and got everything free. Still can't believe it. 10/10 website.",     author:"AnonymousG.", location:"Portland, OR",    cheese:"Various" },
+  { stars:5, body:"The Époisses smells unbelievable in the best possible way. My cat follows me around now. Worth it.",          author:"Sophie R.",   location:"Nashville, TN",   cheese:"Époisses de Bourgogne" },
+  { stars:5, body:"Humboldt Fog is the most beautiful cheese I've seen. Ate half of it before it even hit the board.",          author:"Casey L.",    location:"Los Angeles, CA",  cheese:"Humboldt Fog" },
+  { stars:5, body:"Won a Parmigiano wheel in the raffle. I cried. My neighbours came over. We ate it all. Zero regrets.",       author:"Mike T.",     location:"Philadelphia, PA", cheese:"Parmigiano-Reggiano" },
+  { stars:5, body:"The Stilton with port at Christmas is now a family tradition because of this site. We order every year.",    author:"Oliver P.",   location:"Minneapolis, MN",  cheese:"Stilton PDO" },
+  { stars:5, body:"Vacherin Mont d'Or baked in the oven with garlic bread. I have transcended. This is what life is for.",      author:"Claire B.",   location:"Washington, DC",  cheese:"Vacherin Mont d'Or" },
+  { stars:5, body:"The cheese board builder helped me plan the most impressive dinner party of my life. Everyone asked where I got it.", author:"Nina D.", location:"Miami, FL",   cheese:"Board Builder" },
+  { stars:5, body:"Rogue River Blue is the greatest thing I've eaten. I cancelled my Netflix and spend the money here now.",    author:"Alex M.",     location:"Portland, OR",    cheese:"Rogue River Blue" },
+  { stars:5, body:"Hook's 10-Year Cheddar. TEN YEARS. You can taste every single one of them. Absolutely phenomenal.",         author:"Rachel K.",   location:"Madison, WI",     cheese:"Hook's 10-Year Cheddar" },
+  { stars:5, body:"Montgomery's Cheddar is what cheddar always wanted to be when it grew up. Cloth-bound perfection.",         author:"James H.",    location:"Richmond, VA",    cheese:"Montgomery's Cheddar" },
+  { stars:5, body:"Delivered ice-cold, beautifully wrapped, with a little tasting card. Felt like a gift to myself. Worth it.", author:"Yuki T.",    location:"San Diego, CA",   cheese:"Affineur's Cave Selection" },
+  { stars:5, body:"My husband said he didn't like cheese. I ordered the Manchego. He ate a third of it before dinner. He likes cheese now.", author:"Carmen S.", location:"Santa Fe, NM", cheese:"Manchego DOP" },
+  { stars:5, body:"Fast delivery, incredible packaging, and the most unreal aged Gouda I've ever had. This site is dangerous.",  author:"Ben A.",    location:"Atlanta, GA",     cheese:"Gouda 5-Year Aged" },
+];
+
+function renderTicker() {
+  const el = document.getElementById('reviews-ticker');
+  if (!el) return;
+  // Duplicate for seamless infinite loop
+  const cards = [...TICKER_REVIEWS, ...TICKER_REVIEWS].map(r => `
+    <div class="ticker-card">
+      <div class="ticker-stars">${'★'.repeat(r.stars)}</div>
+      <div class="ticker-body">"${r.body}"</div>
+      <div class="ticker-author">${r.author} · ${r.location}</div>
+      <div class="ticker-cheese">🧀 ${r.cheese}</div>
+    </div>
+  `).join('');
+  el.innerHTML = cards;
+}
+
 // ===================== INIT =====================
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts(CHEESES);
@@ -976,6 +1015,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCoupons();
   renderBoardPalette();
   renderRaffles();
+  renderTicker();
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });
