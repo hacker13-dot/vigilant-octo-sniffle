@@ -835,6 +835,193 @@ img { max-width: 100%; }
   .coupon-value { font-size: 1.4rem; }
 }
 
+/* ===================== OUR STORY ===================== */
+.story-section { background: var(--cream); }
+
+.story-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 2px solid var(--cream-dark);
+}
+
+.story-tag {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--brown-dark);
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: .3rem 1rem;
+  border-radius: 99px;
+  margin-bottom: 1.2rem;
+}
+
+.story-hero-text h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+  color: var(--brown-dark);
+}
+
+.story-lead {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+.story-wheel-graphic {
+  flex-shrink: 0;
+}
+
+.story-wheel-inner {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #f5c842, #d4a017, #a37c00);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.22), inset 0 -4px 12px rgba(0,0,0,0.15);
+  animation: float 4s ease-in-out infinite;
+}
+
+.story-wheel-emoji { font-size: 3.5rem; line-height: 1; }
+.story-wheel-label {
+  font-family: 'Playfair Display', serif;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--brown-dark);
+  margin-top: .3rem;
+  letter-spacing: .06em;
+}
+
+/* Timeline */
+.story-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.story-timeline::before {
+  content: '';
+  position: absolute;
+  left: 72px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), var(--cream-dark));
+}
+
+.story-beat {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 2rem;
+  padding: 2rem 0 2.5rem;
+  position: relative;
+}
+
+.story-beat::after {
+  content: '';
+  position: absolute;
+  left: 66px;
+  top: 2.4rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+.story-beat-marker {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  text-align: right;
+  padding-top: .1rem;
+}
+
+.story-beat-content h3 {
+  font-size: 1.45rem;
+  color: var(--brown-dark);
+  margin-bottom: .9rem;
+}
+
+.story-beat-content p {
+  color: var(--text-muted);
+  font-size: .97rem;
+  line-height: 1.8;
+  margin-bottom: .9rem;
+}
+
+.story-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem !important;
+  color: var(--brown) !important;
+  font-style: italic;
+  border-left: 4px solid var(--gold);
+  padding-left: 1.2rem;
+  margin: 1.2rem 0 !important;
+  line-height: 1.6 !important;
+}
+
+/* Values */
+.story-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  padding: 3rem;
+  background: var(--brown-dark);
+  border-radius: var(--radius);
+}
+
+.story-value { text-align: center; }
+.story-value-icon { font-size: 2.5rem; margin-bottom: .75rem; }
+.story-value h4 {
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  margin-bottom: .5rem;
+}
+.story-value p {
+  font-size: .88rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+}
+
+/* CTA block */
+.story-cta-block {
+  text-align: center;
+  padding: 3rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.story-cta-block h3 { font-size: 2rem; margin-bottom: .75rem; }
+.story-cta-block p { color: var(--text-muted); max-width: 540px; margin: 0 auto 1.8rem; font-size: 1rem; line-height: 1.7; }
+.story-cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .story-hero { grid-template-columns: 1fr; }
+  .story-wheel-graphic { display: none; }
+  .story-timeline::before { left: 52px; }
+  .story-beat { grid-template-columns: 80px 1fr; gap: 1rem; }
+  .story-beat::after { left: 46px; }
+  .story-beat-marker { font-size: .9rem; }
+  .story-values { padding: 2rem 1.25rem; }
+  .story-cta-block { padding: 2rem 1.25rem; }
+}
+
 /* ===================== RAFFLES ===================== */
 .raffle-grid {
   display: grid;
