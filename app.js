@@ -210,6 +210,7 @@ let currentQty = 1;
 let currentProductId = null;
 let activeFilter = 'all';
 let searchQuery = '';
+let freeCheeseActive = false;
 
 // ===================== RENDER PRODUCTS =====================
 function imgTag(c, height = '180px') {
@@ -344,14 +345,25 @@ function updateCartUI() {
       <div class="cart-item-emoji">${item.emoji}</div>
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-price">$${item.price.toFixed(2)} × ${item.qty} = $${(item.price * item.qty).toFixed(2)}</div>
+        <div class="cart-item-price">
+          ${freeCheeseActive
+            ? `<span style="text-decoration:line-through;color:var(--text-muted)">$${(item.price * item.qty).toFixed(2)}</span> <strong style="color:var(--green)">FREE 🎉</strong>`
+            : `$${item.price.toFixed(2)} × ${item.qty} = $${(item.price * item.qty).toFixed(2)}`
+          }
+        </div>
       </div>
       <button class="cart-item-remove" onclick="removeFromCart(${item.id})">🗑</button>
     </div>
   `).join('');
 
-  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+  const rawTotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const total = freeCheeseActive ? 0 : rawTotal;
+  const totalEl = document.getElementById('cart-total');
+  if (freeCheeseActive) {
+    totalEl.innerHTML = `<span style="text-decoration:line-through;color:var(--text-muted);font-weight:400">$${rawTotal.toFixed(2)}</span> <span style="color:var(--green)">$0.00 🎉</span>`;
+  } else {
+    totalEl.textContent = `$${total.toFixed(2)}`;
+  }
   footer.style.display = 'flex';
 }
 
@@ -365,6 +377,14 @@ function toggleCart() {
 function applyCoupon() {
   const input = document.getElementById('coupon-input');
   const code = input.value.trim().toUpperCase();
+  if (code === 'CHEESYFREE') {
+    freeCheeseActive = true;
+    input.style.borderColor = 'var(--green)';
+    input.value = 'CHEESYFREE ✓';
+    updateCartUI();
+    toast('🧀🎉 ALL CHEESE IS NOW FREE! You beautiful human.');
+    return;
+  }
   const valid = COUPONS.map(c => c.code);
   if (valid.includes(code)) {
     toast(`✅ Coupon ${code} applied! Discount reflected at checkout.`);
@@ -509,10 +529,12 @@ function submitTrade() {
 
 // ===================== CHECKOUT =====================
 function placeOrder() {
+  const wasFree = freeCheeseActive;
   cart = [];
+  freeCheeseActive = false;
   updateCartUI();
   closeModal('checkout-modal');
-  toast('🎉 Order placed! Your cheese is on its way!');
+  toast(wasFree ? '🧀🎉 FREE cheese order placed! Enjoy every single bite!' : '🎉 Order placed! Your cheese is on its way!');
 }
 
 // ===================== NEWSLETTER =====================
