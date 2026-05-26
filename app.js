@@ -1007,6 +1007,18 @@ function renderTicker() {
   el.innerHTML = cards;
 }
 
+// ===================== COMMERCIAL =====================
+function replayCommercial() {
+  const sec = document.querySelector('.commercial-section');
+  if (!sec) return;
+  sec.classList.add('replaying');
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      sec.classList.remove('replaying');
+    });
+  });
+}
+
 // ===================== INIT =====================
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts(CHEESES);
