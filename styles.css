@@ -1230,6 +1230,42 @@ img { max-width: 100%; }
 .club-features li { padding: .35rem 0; font-size: .92rem; border-bottom: 1px solid var(--cream-dark); }
 .club-features li:last-child { border: none; }
 
+.club-tier-label {
+  font-size: .82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--cream-dark);
+  padding-bottom: .6rem;
+  margin-bottom: 2rem;
+}
+
+.club-desc {
+  font-size: .88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.club-grid-specialty {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.club-specialty { text-align: left; }
+.club-specialty .club-emoji { text-align: left; }
+.club-specialty h3 { text-align: left; }
+.club-specialty .club-price { text-align: left; }
+.club-specialty .btn-outline,
+.club-specialty .btn-primary { width: 100%; text-align: center; }
+
+.club-badge-blue  { background: #3b5ea6; }
+.club-badge-goat  { background: #5a8a4a; }
+.club-badge-cave  { background: #4a3728; }
+.club-badge-gift  { background: #c04b8a; }
+.club-badge-wine  { background: #7b2d5e; }
+
 /* ===================== BOARD BUILDER ===================== */
 .builder-layout {
   display: grid;
