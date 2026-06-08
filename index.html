@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheBigCheese.com — Buy, Sell & Trade Artisan Cheeses</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">🧀 TheBigCheese.com</a>
+    <ul class="nav-links">
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#sell">Sell</a></li>
+      <li><a href="#trade">Trade</a></li>
+      <li><a href="#deals">Weekly Deals</a></li>
+      <li><a href="#coupons">Coupons</a></li>
+      <li><a href="#our-story">Our Story</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#raffles">Raffles</a></li>
+      <li><a href="#club">Month Club</a></li>
+      <li><a href="#board-builder">Board Builder</a></li>
+      <li><a href="#" onclick="showModal('quiz-modal')">Cheese Quiz</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-cart" onclick="toggleCart()">🛒 Cart <span id="cart-count">0</span></button>
+      <button class="btn-primary" onclick="showModal('login-modal')">Sign In</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#shop">Shop</a>
+    <a href="#sell">Sell</a>
+    <a href="#trade">Trade</a>
+    <a href="#deals">Weekly Deals</a>
+    <a href="#coupons">Coupons</a>
+    <a href="#our-story">Our Story</a>
+    <a href="#videos">Videos</a>
+    <a href="#raffles">Raffles</a>
+    <a href="#club">Month Club</a>
+    <a href="#board-builder">Board Builder</a>
+    <a href="#" onclick="showModal('quiz-modal')">Cheese Quiz</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🏆 #1 Online Cheese Destination</div>
+    <h1>The World's Finest<br /><span class="accent">TheBigCheese.com</span></h1>
+    <p>Discover, buy, sell, and trade artisan cheeses from around the globe. From aged Parmigiano to creamy Brie — your next favorite is one click away.</p>
+    <div class="hero-cta">
+      <a href="#shop" class="btn-primary btn-large">Shop Now</a>
+      <a href="#trade" class="btn-outline btn-large">Trade Cheese</a>
+      <button class="btn-gold btn-large" onclick="startQuiz()">🎯 Find My Cheese</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>2,600+</strong><span>Cheese Varieties</span></div>
+      <div class="stat"><strong>700,000+</strong><span>Happy Buyers</span></div>
+      <div class="stat"><strong>430+</strong><span>Artisan Sellers</span></div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="cheese-wheel">
+      <div class="cheese-wedge c1">🧀</div>
+      <div class="cheese-wedge c2">🫕</div>
+      <div class="cheese-wedge c3">🥗</div>
+      <div class="cheese-wheel-center">Fresh Daily</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMERCIAL -->
+<section class="commercial-section" id="commercial" aria-label="TheBigCheese.com commercial">
+  <div class="commercial-inner">
+
+    <!-- Scene 1 -->
+    <div class="comm-scene comm-s1">
+      <p class="comm-eyebrow">An announcement.</p>
+      <h2 class="comm-headline">You've been settling for<br /><em>ordinary cheese</em>.</h2>
+    </div>
+
+    <!-- Scene 2 -->
+    <div class="comm-scene comm-s2">
+      <div class="comm-wheel-wrap">
+        <span class="comm-wheel-emoji">🧀</span>
+        <div class="comm-wheel-ring"></div>
+      </div>
+      <h2 class="comm-headline">That ends<br /><em>today.</em></h2>
+    </div>
+
+    <!-- Scene 3 -->
+    <div class="comm-scene comm-s3">
+      <div class="comm-stats-row">
+        <div class="comm-stat-block">
+          <span class="comm-stat-num">262</span>
+          <span class="comm-stat-label">Cheeses</span>
+        </div>
+        <div class="comm-stat-divider"></div>
+        <div class="comm-stat-block">
+          <span class="comm-stat-num">40</span>
+          <span class="comm-stat-label">Countries</span>
+        </div>
+        <div class="comm-stat-divider"></div>
+        <div class="comm-stat-block">
+          <span class="comm-stat-num">700K</span>
+          <span class="comm-stat-label">Cheese Lovers</span>
+        </div>
+      </div>
+      <p class="comm-sub">One destination. Every cheese worth knowing.</p>
+    </div>
+
+    <!-- Scene 4 – End card -->
+    <div class="comm-scene comm-s4">
+      <div class="comm-logo-large">🧀 TheBigCheese.com</div>
+      <p class="comm-tagline">The World's Greatest Cheese, Delivered.</p>
+      <div class="comm-cta-row">
+        <a href="#shop" class="btn-primary btn-large">Shop Now</a>
+        <button class="btn-outline btn-large comm-btn-outline" onclick="startQuiz()">Find My Cheese 🎯</button>
+      </div>
+      <div class="comm-replay" onclick="replayCommercial()" title="Replay">↺ replay</div>
+    </div>
+
+  </div>
+
+  <!-- muted indicator -->
+  <div class="comm-mute-badge">📺 Auto-playing</div>
+</section>
+
+<!-- SCROLLING REVIEWS -->
+<section class="reviews-ticker-section">
+  <div class="reviews-ticker-label">⭐⭐⭐⭐⭐ &nbsp; What our customers say</div>
+  <div class="reviews-ticker-wrap">
+    <div class="reviews-ticker" id="reviews-ticker">
+      <!-- Populated by JS (duplicated for infinite scroll) -->
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY DEALS BANNER -->
+<div class="deals-banner">
+  <span class="blink">🔥 WEEKLY DEALS LIVE</span>
+  &nbsp; Save up to 40% on select cheeses — this week only! &nbsp;
+  <a href="#deals">View All Deals →</a>
+</div>
+
+<!-- SHOP -->
+<section id="shop" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Shop Cheeses</h2>
+      <p>Browse our curated selection of artisan and farmhouse cheeses</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCheese('all', this)">All</button>
+      <button class="filter-btn" onclick="filterCheese('hard', this)">Hard</button>
+      <button class="filter-btn" onclick="filterCheese('soft', this)">Soft</button>
+      <button class="filter-btn" onclick="filterCheese('blue', this)">Blue</button>
+      <button class="filter-btn" onclick="filterCheese('aged', this)">Aged</button>
+      <button class="filter-btn" onclick="filterCheese('fresh', this)">Fresh</button>
+      <input type="text" class="search-input" placeholder="Search cheeses..." oninput="searchCheese(this.value)" />
+    </div>
+
+    <div class="product-grid" id="product-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- SELL -->
+<section id="sell" class="section section-alt">
+  <div class="container">
+    <div class="two-col">
+      <div class="sell-info">
+        <h2>Sell Your Cheese</h2>
+        <p>Are you a cheesemaker, dairy farmer, or artisan producer? List your cheeses and reach thousands of cheese lovers nationwide.</p>
+        <ul class="feature-list">
+          <li>✅ Free listings for the first 30 days</li>
+          <li>✅ Secure payments & buyer protection</li>
+          <li>✅ Nationwide cold-chain shipping support</li>
+          <li>✅ Seller dashboard & analytics</li>
+          <li>✅ Verified Artisan badge available</li>
+        </ul>
+        <button class="btn-primary btn-large" onclick="showModal('sell-modal')">Start Selling</button>
+      </div>
+      <div class="sell-form-card">
+        <h3>Quick Listing Preview</h3>
+        <div class="mini-form">
+          <input type="text" placeholder="Cheese Name" id="sell-name" />
+          <input type="text" placeholder="Type (e.g. Aged Gouda)" id="sell-type" />
+          <input type="number" placeholder="Price per lb ($)" id="sell-price" />
+          <textarea placeholder="Description..." id="sell-desc" rows="3"></textarea>
+          <select id="sell-condition">
+            <option value="">Condition / Age</option>
+            <option>Fresh (under 2 weeks)</option>
+            <option>Young (1–3 months)</option>
+            <option>Aged (3–12 months)</option>
+            <option>Extra Aged (12+ months)</option>
+          </select>
+          <button class="btn-primary" onclick="submitListing()">Preview Listing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRADE -->
+<section id="trade" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Trade Cheese</h2>
+      <p>Swap your surplus cheese with other enthusiasts and collectors</p>
+    </div>
+    <div class="trade-grid" id="trade-grid">
+      <!-- Populated by JS -->
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <button class="btn-outline btn-large" onclick="showModal('trade-modal')">Post a Trade Offer</button>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY DEALS -->
+<section id="deals" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>🔥 Weekly Deals</h2>
+      <p>Limited-time offers — refreshed every Monday</p>
+      <div class="countdown" id="countdown"></div>
+    </div>
+    <div class="deals-grid" id="deals-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- COUPONS -->
+<section id="coupons" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>🎟️ Coupons & Promo Codes</h2>
+      <p>Copy a code and use it at checkout for instant savings</p>
+    </div>
+    <div class="coupon-grid" id="coupon-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- RAFFLES -->
+<section id="raffles" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>🎰 Cheese Raffles</h2>
+      <p>Win world-class cheese prizes — enter for just a few dollars a ticket</p>
+    </div>
+    <div class="raffle-grid" id="raffle-grid"></div>
+    <div class="raffle-winners-section">
+      <h3>🏆 Recent Winners</h3>
+      <div class="winners-grid" id="winners-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEESE OF THE MONTH CLUB -->
+<section id="club" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>🧀 Cheese of the Month Club</h2>
+      <p>A curated box of world-class artisan cheeses delivered to your door every month</p>
+    </div>
+    <!-- tier label -->
+    <div class="club-tier-label">📦 Size Tiers — pick your portion</div>
+    <div class="club-grid">
+      <div class="club-card">
+        <div class="club-badge">Starter</div>
+        <div class="club-emoji">🥉</div>
+        <h3>The Curious Curd</h3>
+        <div class="club-price">$39<span>/mo</span></div>
+        <ul class="club-features">
+          <li>✔ 3 curated cheeses (~1 lb each)</li>
+          <li>✔ 1 jar of artisan fruit preserve</li>
+          <li>✔ 1 pack of gourmet crackers</li>
+          <li>✔ Free cold-chain shipping</li>
+        </ul>
+        <button class="btn-outline btn-large" onclick="joinClub('Curious Curd - $39/mo')">Join Now</button>
+      </div>
+      <div class="club-card club-featured">
+        <div class="club-badge badge-gold">Most Popular</div>
+        <div class="club-emoji">🥇</div>
+        <h3>The Big Cheese Box</h3>
+        <div class="club-price">$69<span>/mo</span></div>
+        <ul class="club-features">
+          <li>✔ 6 curated cheeses (~1 lb each)</li>
+          <li>✔ 2 artisan jams or fruit pastes</li>
+          <li>✔ 1 pack of charcuterie (salami or prosciutto)</li>
+          <li>✔ 1 jar of honey or chutney</li>
+          <li>✔ Gourmet crackers &amp; breadsticks</li>
+          <li>✔ Free cold-chain shipping</li>
+        </ul>
+        <button class="btn-primary btn-large" onclick="joinClub('Big Cheese Box - $69/mo')">Join Now</button>
+      </div>
+      <div class="club-card">
+        <div class="club-badge">Connoisseur</div>
+        <div class="club-emoji">👑</div>
+        <h3>The Grand Fromage</h3>
+        <div class="club-price">$119<span>/mo</span></div>
+        <ul class="club-features">
+          <li>✔ 12 curated cheeses (~1 lb each)</li>
+          <li>✔ 3 artisan jams, honeys &amp; chutneys</li>
+          <li>✔ Full charcuterie selection (4 meats)</li>
+          <li>✔ Truffle oil &amp; aged balsamic</li>
+          <li>✔ Sourdough crackers &amp; walnut bread</li>
+          <li>✔ Dried fruits &amp; roasted nuts mix</li>
+          <li>✔ Member discount (20%)</li>
+          <li>✔ Free cold-chain shipping</li>
+        </ul>
+        <button class="btn-outline btn-large" onclick="joinClub('Grand Fromage - $119/mo')">Join Now</button>
+      </div>
+    </div>
+
+    <!-- specialty clubs -->
+    <div class="club-tier-label" style="margin-top:3.5rem">🌟 Specialty Clubs — curated by obsession</div>
+    <div class="club-grid club-grid-specialty">
+
+      <div class="club-card club-specialty">
+        <div class="club-badge club-badge-blue">Blue Lovers</div>
+        <div class="club-emoji">💙</div>
+        <h3>The Blue Room</h3>
+        <div class="club-price">$49<span>/mo</span></div>
+        <p class="club-desc">Four extraordinary blue cheeses every month — from gentle Gorgonzola Dolce to ferocious Cabrales. The world's greatest blues, delivered.</p>
+        <ul class="club-features">
+          <li>✔ 4 blue cheeses (~¾ lb each)</li>
+          <li>✔ 1 jar of wildflower honey</li>
+          <li>✔ 1 bottle of port or dessert wine</li>
+          <li>✔ Walnut &amp; pecan mix</li>
+          <li>✔ Dark chocolate bar (70%)</li>
+          <li>✔ Free cold-chain shipping</li>
+        </ul>
+        <button class="btn-outline btn-large" onclick="joinClub('The Blue Room - $49/mo')">Join Now</button>
+      </div>
+
+      <div class="club-card club-specialty club-featured">
+        <div class="club-badge badge-gold">Best Adventure</div>
+        <div class="club-emoji">🌍</div>
+        <h3>The Globetrotter</h3>
+        <div class="club-price">$59<span>/mo</span></div>
+        <p class="club-desc">Every month we tour a different cheese region — France, Spain, Italy, Switzerland, the British Isles. Five cheeses, one country, total immersion.</p>
+        <ul class="club-features">
+          <li>✔ 5 cheeses from one featured region</li>
+          <li>✔ Regional charcuterie or cured meat</li>
+          <li>✔ Local jam, mostarda or preserve</li>
+          <li>✔ Regional crackers or flatbread</li>
+          <li>✔ Regional olive oil or condiment</li>
+          <li>✔ 10% member discount</li>
+          <li>✔ Free cold-chain shipping</li>
+        </ul>
+        <button class="btn-primary btn-large" onclick="joinClub('The Globetrotter - $59/mo')">Join Now</button>
+      </div>
+
+      <div class="club-card club-specialty">
+        <div class="club-badge club-badge-goat">Goat Milk Only</div>
+        <div class="club-emoji">🐐</div>
+        <h3>The Goat Society</h3>
+        <div class="club-price">$44<span>/mo</span></div>
+        <p class="club-desc">From Loire Valley chèvre to aged Spanish Garrotxa — a deep dive into the world's most varied milk. For those who believe goat cheese is an entire universe.</p>
+        <ul class="club-features">
+          <li>✔ 4 goat's milk cheeses (fresh to aged)</li>
+          <li>✔ 1 jar of fig or quince jam</li>
+          <li>✔ Lavender honey drizzler</li>
+          <li>✔ Roasted almond &amp; pistachio mix</li>
+          <li>✔ Free cold-chain shipping</li>
+        </ul>
+        <button class="btn-outline btn-large" onclick="joinClub('The Goat Society - $44/mo')">Join Now</button>
+      </div>
+
+      <div class="club-card club-specialty">
+        <div class="club-badge club-badge-cave">Reserve Selections</div>
+        <div class="club-emoji">🕯️</div>
+        <h3>The Cave Reserve</h3>
+        <div class="club-price">$99<span>/mo</span></div>
+        <p class="club-desc">Nothing under 12 months old. Our affineur hand-selects five cave-aged and reserve cheeses from producers who measure quality in years, not weeks.</p>
+        <ul class="club-features">
+          <li>✔ 5 cave-aged or reserve cheeses</li>
+          <li>✔ 25-year aged balsamic vinegar</li>
+          <li>✔ Raw honeycomb (full frame slice)</li>
+          <li>✔ Truffle salt &amp; truffle honey</li>
+          <li>✔ Artisan quince paste &amp; fruit bread</li>
+          <li>✔ 15% member discount</li>
+          <li>✔ Free cold-chain shipping</li>
+        </ul>
+        <button class="btn-outline btn-large" onclick="joinClub('The Cave Reserve - $99/mo')">Join Now</button>
+      </div>
+
+      <div class="club-card club-specialty">
+        <div class="club-badge club-badge-gift">🎁 Gift Option</div>
+        <div class="club-emoji">🎀</div>
+        <h3>The Gift Club</h3>
+        <div class="club-price">$75<span>/mo</span></div>
+        <p class="club-desc">Send the gift of world-class cheese to someone you love every single month. Premium food pairings included — no assembly required on their end.</p>
+        <ul class="club-features">
+          <li>✔ 6 curated cheeses (~1 lb each)</li>
+          <li>✔ 2 artisan jams or fruit pastes</li>
+          <li>✔ Charcuterie selection (3 meats)</li>
+          <li>✔ Mixed nuts &amp; dried fruit</li>
+          <li>✔ Gourmet crackers &amp; breadsticks</li>
+          <li>✔ Premium gift box packaging</li>
+          <li>✔ Free cold-chain shipping</li>
+        </ul>
+        <button class="btn-outline btn-large" onclick="joinClub('The Gift Club - $75/mo')">Join Now</button>
+      </div>
+
+      <div class="club-card club-specialty">
+        <div class="club-badge club-badge-wine">Cheese + Wine</div>
+        <div class="club-emoji">🍷</div>
+        <h3>The Sommelier's Table</h3>
+        <div class="club-price">$89<span>/mo</span></div>
+        <p class="club-desc">Our sommelier and affineur collaborate to create four perfect cheese-and-wine pairings. Everything you need for a complete tasting evening — just open the box.</p>
+        <ul class="club-features">
+          <li>✔ 4 cheeses specifically chosen for pairing</li>
+          <li>✔ 2 full bottles of curated wine</li>
+          <li>✔ Charcuterie board selection</li>
+          <li>✔ Artisan olives &amp; cornichons jar</li>
+          <li>✔ Grissini, crackers &amp; fruit loaf</li>
+          <li>✔ Candied walnuts &amp; chocolate</li>
+          <li>✔ 15% member discount</li>
+          <li>✔ Free cold-chain shipping</li>
+        </ul>
+        <button class="btn-outline btn-large" onclick="joinClub('The Sommelier\'s Table - $89/mo')">Join Now</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CHEESE BOARD BUILDER -->
+<section id="board-builder" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>🪵 Cheese Board Builder</h2>
+      <p>Click cheeses and accompaniments to design your perfect board — then add everything to cart at once</p>
+    </div>
+    <div class="builder-layout">
+      <div class="builder-palette">
+        <h4>Cheeses</h4>
+        <div class="palette-items" id="palette-cheeses"></div>
+        <h4 style="margin-top:1.2rem">Accompaniments</h4>
+        <div class="palette-items" id="palette-extras"></div>
+      </div>
+      <div class="builder-board" id="builder-board">
+        <div class="board-placeholder" id="board-placeholder">Click items on the left to build your board →</div>
+        <div class="board-items" id="board-items"></div>
+      </div>
+    </div>
+    <div class="builder-footer">
+      <div class="builder-total">Board Total: <strong id="board-total">$0.00</strong></div>
+      <button class="btn-outline" onclick="clearBoard()">Clear Board</button>
+      <button class="btn-primary btn-large" onclick="addBoardToCart()">Add Board to Cart 🛒</button>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section id="our-story" class="section story-section">
+  <div class="container">
+
+    <div class="story-hero">
+      <div class="story-hero-text">
+        <div class="story-tag">Our Story</div>
+        <h2>Born from a Terrible Sandwich<br/>and an Extraordinary Cheese</h2>
+        <p class="story-lead">TheBigCheese.com didn't start in a boardroom or a business school. It started in a tiny apartment kitchen, at 2am, with a block of the most life-changing cheese its founder had ever tasted — and an absolute fury that nobody else could find it.</p>
+      </div>
+      <div class="story-wheel-graphic">
+        <div class="story-wheel-inner">
+          <span class="story-wheel-emoji">🧀</span>
+          <div class="story-wheel-label">Est. 2021</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-timeline">
+
+      <div class="story-beat">
+        <div class="story-beat-marker">2019</div>
+        <div class="story-beat-content">
+          <h3>The Sandwich That Changed Everything</h3>
+          <p>Our founder, Jamie, was a regular person living a regular life — eating regular cheese. Shrink-wrapped, orange, forgettable. Then a friend came back from a trip to a tiny village in the French Alps and brought a wedge of 18-month mountain Comté wrapped in wax paper and newspaper. Jamie ate it standing over the kitchen counter at midnight.</p>
+          <p class="story-quote">"I didn't know cheese could do that. I sat down on the floor. I genuinely had to sit down."</p>
+          <p>The next day, Jamie tried to buy more. There was nowhere. Not locally. Not online — not really. There were a few specialist shops, a handful of mail-order services, but nothing that felt like it was built for people who actually cared. No community. No discovery. No conversation between the farmer who made the cheese and the person who needed it.</p>
+        </div>
+      </div>
+
+      <div class="story-beat">
+        <div class="story-beat-marker">2020</div>
+        <div class="story-beat-content">
+          <h3>The Lockdown Revelation</h3>
+          <p>When the world locked down, something unexpected happened in kitchens everywhere. People — suddenly home, suddenly cooking, suddenly paying attention — rediscovered food. Sourdough bread. Homemade pasta. And cheese. <em>Real</em> cheese.</p>
+          <p>Jamie spent six months calling artisan cheesemakers across Europe and the USA. Farmhouse producers in Somerset. Alpine dairies in Fribourg. Cave-agers in the Aveyron. Family operations in Puglia and Cork and Asturias. Most of them had incredible, world-class cheese sitting in their cellars — and almost no way to reach the people who would love it most.</p>
+          <p class="story-quote">"One cheesemaker in County Cork told me he'd been making his cheese for 40 years and his biggest customer was a deli in Dublin that sold 3 wheels a month. His cheese was extraordinary. It deserved the world."</p>
+          <p>That phone call sealed it. TheBigCheese.com had to exist.</p>
+        </div>
+      </div>
+
+      <div class="story-beat">
+        <div class="story-beat-marker">2021</div>
+        <div class="story-beat-content">
+          <h3>We Launched with 12 Cheeses and Zero Sleep</h3>
+          <p>The first version of TheBigCheese.com launched on a Tuesday morning in March 2021. We had 12 cheeses, a website built on determination, a cold-chain logistics partnership we'd spent four months negotiating, and approximately zero marketing budget.</p>
+          <p>We sold out in 48 hours. Not because we were famous. Because there were people — thousands of them — who had been waiting for exactly this without knowing it. People who had eaten something extraordinary once and never found it again. People who had made cheese at home and wanted to trade. People who had visited a farmers' market and thought: <em>why can't I get this delivered?</em></p>
+          <p class="story-quote">"The first review we ever got said: 'I cried a little. That's embarrassing to admit but it's the truth. It tasted like the holiday I took 10 years ago and thought I'd never get back.' That's why we do this."</p>
+        </div>
+      </div>
+
+      <div class="story-beat">
+        <div class="story-beat-marker">Today</div>
+        <div class="story-beat-content">
+          <h3>262 Cheeses. 430 Makers. One Mission.</h3>
+          <p>Today TheBigCheese.com is home to over 262 cheeses from 40 countries, 430 artisan sellers, and a community of 700,000 cheese lovers who trade, review, discover and obsess together. We have a monthly cheese club. We run raffles that give people the chance to win a five-pound wheel of Parmigiano. We have a cheese board builder that lets you plan the perfect spread for any occasion.</p>
+          <p>But the mission is exactly the same as it was at 2am over that block of Comté.</p>
+          <p class="story-quote">"Great cheese should not be a secret. It should not live only in specialist shops in major cities or on the tables of people who already know. It belongs to everyone who is willing to be curious."</p>
+          <p>We believe a piece of cheese can transport you. It can taste like a particular valley, a specific altitude, a particular season, a farmer who has been doing the same thing for 40 years because they love it. We believe that deserves to be celebrated — and shared.</p>
+          <p>TheBigCheese.com exists so that the next person who tastes something extraordinary at 2am never has to go without it again.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="story-values">
+      <div class="story-value">
+        <div class="story-value-icon">🧑‍🌾</div>
+        <h4>Maker First</h4>
+        <p>Every cheese on our platform comes with a direct relationship to the person who made it. We pay makers fairly and list their stories alongside their cheese.</p>
+      </div>
+      <div class="story-value">
+        <div class="story-value-icon">🌍</div>
+        <h4>Radical Discovery</h4>
+        <p>We believe the world's best cheese might be made in a shed in County Cork or a cave in Asturias. We find it. We ship it to your door.</p>
+      </div>
+      <div class="story-value">
+        <div class="story-value-icon">❄️</div>
+        <h4>Cold-Chain Obsessed</h4>
+        <p>Cheese is alive. It deserves to arrive in perfect condition. Our temperature-controlled cold chain is the best in the business — guaranteed.</p>
+      </div>
+      <div class="story-value">
+        <div class="story-value-icon">🤝</div>
+        <h4>Community Built</h4>
+        <p>The cheese trading board, the reviews, the quiz — we built features for people who genuinely care. Because cheese is better when it's shared.</p>
+      </div>
+    </div>
+
+    <div class="story-cta-block">
+      <h3>Ready to Find Your Cheese?</h3>
+      <p>Take our quiz, browse 162 cheeses, or talk to our team. We're here for every question, from 'what goes with Sauternes' to 'how do I store a whole wheel of Parmigiano.'</p>
+      <div class="story-cta-buttons">
+        <button class="btn-primary btn-large" onclick="startQuiz()">🎯 Find My Cheese</button>
+        <a href="#shop" class="btn-outline btn-large">Browse the Shop</a>
+        <a href="#club" class="btn-outline btn-large">Join the Club</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos" class="section video-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>🎬 Cheese on Film</h2>
+      <p>Watch the stories behind the cheese — from ancient Alpine caves to our own origin story</p>
+    </div>
+
+    <div class="video-grid">
+
+      <div class="video-card video-card-featured">
+        <div class="video-embed-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/JDHhHuoHbUU?rel=0&modestbranding=1"
+            title="The World of Artisan Cheese"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="video-card-body">
+          <div class="video-tag">🧀 Featured Documentary</div>
+          <h3>The World of Artisan Cheese</h3>
+          <p>Journey from Alpine meadows to cave-aged cellars. A beautiful deep-dive into the cheesemakers who dedicate their lives to crafting the world's most extraordinary flavours — including many you'll find right here on TheBigCheese.com.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/9PqU2dSNFeg?rel=0&modestbranding=1"
+            title="How Artisan Cheese Is Made"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="video-card-body">
+          <div class="video-tag">🏭 Craft & Process</div>
+          <h3>How Artisan Cheese Is Made</h3>
+          <p>From raw milk to aged rind — the remarkable science and craft behind the cheeses you love.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/KnEgzQJMFDU?rel=0&modestbranding=1"
+            title="Our Story — TheBigCheese.com"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="video-card-body">
+          <div class="video-tag">💛 Our Story</div>
+          <h3>Born at 2am in a Kitchen</h3>
+          <p>A midnight wedge of Comté. A founder sitting on the floor. The origin story of TheBigCheese.com — and why we believe great cheese should reach everyone.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/Z6cBhI5Kk4M?rel=0&modestbranding=1"
+            title="The 162 Cheeses of TheBigCheese.com"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="video-card-body">
+          <div class="video-tag">🌍 Cheese World Tour</div>
+          <h3>A Tour of All 162 Cheeses</h3>
+          <p>Every cheese on our platform — origin, type, tasting notes, and why we chose it. If you've ever wondered what separates a young Manchego from an aged one, start here.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="video-cta">
+      <p>Love what you see? These are the cheeses behind the stories.</p>
+      <div class="video-cta-buttons-row">
+        <a href="#shop" class="btn-primary btn-large">Shop the Cheeses</a>
+        <a href="#our-story" class="btn-outline btn-large">Read Our Story</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="container">
+    <h2>Get Exclusive Cheese Deals</h2>
+    <p>Join 700,000+ cheese lovers. Deals, new arrivals & recipes in your inbox weekly.</p>
+    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+      <input type="email" placeholder="Enter your email..." required />
+      <button type="submit" class="btn-primary">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="logo">🧀 TheBigCheese.com</div>
+      <p>The world's premier online marketplace for artisan, farmhouse, and specialty cheeses.</p>
+    </div>
+    <div>
+      <h4>Marketplace</h4>
+      <ul>
+        <li><a href="#shop">Buy Cheese</a></li>
+        <li><a href="#sell">Sell Cheese</a></li>
+        <li><a href="#trade">Trade Cheese</a></li>
+        <li><a href="#deals">Weekly Deals</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Returns Policy</a></li>
+        <li><a href="#">Seller Guide</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>About</h4>
+      <ul>
+        <li><a href="#our-story">Our Story</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 TheBigCheese.com. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<aside class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <h3>Your Cart 🛒</h3>
+    <button onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <p class="empty-cart">Your cart is empty. Add some cheese!</p>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-total">Total: <strong id="cart-total">$0.00</strong></div>
+    <input type="text" placeholder="Coupon code..." id="coupon-input" />
+    <button class="btn-outline" onclick="applyCoupon()">Apply Coupon</button>
+    <button class="btn-primary" onclick="showModal('checkout-modal')">Checkout</button>
+  </div>
+</aside>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="login-modal" onclick="closeModalOutside(event, 'login-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login-modal')">✕</button>
+    <h2>Sign In</h2>
+    <div class="mini-form">
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <button class="btn-primary">Sign In</button>
+      <p style="text-align:center">Don't have an account? <a href="#" onclick="closeModal('login-modal');showModal('signup-modal')">Sign Up</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="signup-modal" onclick="closeModalOutside(event, 'signup-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('signup-modal')">✕</button>
+    <h2>Create Account</h2>
+    <div class="mini-form">
+      <input type="text" placeholder="Full Name" />
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <label><input type="checkbox" /> I'm a seller / cheesemaker</label>
+      <button class="btn-primary">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="sell-modal" onclick="closeModalOutside(event, 'sell-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('sell-modal')">✕</button>
+    <h2>Start Selling</h2>
+    <p>Create your free seller account and list your first cheese in minutes.</p>
+    <div class="mini-form">
+      <input type="text" placeholder="Business / Farm Name" />
+      <input type="email" placeholder="Email" />
+      <input type="text" placeholder="Location (City, State)" />
+      <button class="btn-primary">Create Seller Account</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="trade-modal" onclick="closeModalOutside(event, 'trade-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('trade-modal')">✕</button>
+    <h2>Post a Trade Offer</h2>
+    <div class="mini-form">
+      <input type="text" placeholder="I have: (e.g. 2 lbs Manchego)" />
+      <input type="text" placeholder="I want: (e.g. Aged Cheddar or Brie)" />
+      <input type="text" placeholder="Your location" />
+      <textarea placeholder="Additional notes..." rows="2"></textarea>
+      <button class="btn-primary" onclick="submitTrade()">Post Trade</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="checkout-modal" onclick="closeModalOutside(event, 'checkout-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('checkout-modal')">✕</button>
+    <h2>Checkout</h2>
+    <div class="mini-form">
+      <input type="text" placeholder="Full Name" />
+      <input type="text" placeholder="Shipping Address" />
+      <input type="text" placeholder="City, State, ZIP" />
+      <input type="text" placeholder="Card Number" />
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+        <input type="text" placeholder="MM/YY" />
+        <input type="text" placeholder="CVV" />
+      </div>
+      <button class="btn-primary" onclick="placeOrder()">Place Order</button>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ MODAL -->
+<div class="modal-overlay" id="quiz-modal" onclick="closeModalOutside(event, 'quiz-modal')">
+  <div class="modal modal-wide">
+    <button class="modal-close" onclick="closeModal('quiz-modal')">✕</button>
+    <div id="quiz-content"></div>
+  </div>
+</div>
+
+<!-- REVIEW MODAL -->
+<div class="modal-overlay" id="review-modal" onclick="closeModalOutside(event, 'review-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('review-modal')">✕</button>
+    <h2>Write a Review</h2>
+    <div class="mini-form">
+      <div class="star-picker" id="star-picker">
+        <span onclick="pickStar(1)">★</span><span onclick="pickStar(2)">★</span>
+        <span onclick="pickStar(3)">★</span><span onclick="pickStar(4)">★</span><span onclick="pickStar(5)">★</span>
+      </div>
+      <input type="text" placeholder="Your name" id="review-name" />
+      <textarea placeholder="What did you think of this cheese?" id="review-text" rows="4"></textarea>
+      <button class="btn-primary" onclick="submitReview()">Submit Review</button>
+    </div>
+  </div>
+</div>
+
+<!-- CLUB MODAL -->
+<div class="modal-overlay" id="club-modal" onclick="closeModalOutside(event, 'club-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('club-modal')">✕</button>
+    <h2>Join the Club 🧀</h2>
+    <p id="club-plan-label" style="font-weight:600;color:var(--brown);margin-bottom:1rem"></p>
+    <div class="mini-form">
+      <input type="text" placeholder="Full Name" />
+      <input type="email" placeholder="Email Address" />
+      <input type="text" placeholder="Shipping Address" />
+      <select><option>Monthly (save 0%)</option><option>Every 3 months (save 5%)</option><option>Annual (save 15%)</option></select>
+      <button class="btn-primary" onclick="confirmClub()">Subscribe Now</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="product-modal" onclick="closeModalOutside(event, 'product-modal')">
+  <div class="modal modal-wide">
+    <button class="modal-close" onclick="closeModal('product-modal')">✕</button>
+    <div id="product-modal-content"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
